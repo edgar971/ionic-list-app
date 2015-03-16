@@ -1,10 +1,12 @@
-myApp.controller('DrawingListCtrl', function($scope, $ionicModal) {
+myApp.controller('DrawingListCtrl', function($scope, $ionicModal, DrawingsAPI) {
+	$scope.newItem = {name: ""};
 	$ionicModal.fromTemplateUrl('/js/templates/addDrawingModal.html', {
     	scope: $scope,
 		animation: 'slide-in-up'
   	}).then(function(modal) {
     	$scope.modal = modal;
   	});
+  	
   	
   	
 	$scope.drawings = [
@@ -30,11 +32,12 @@ myApp.controller('DrawingListCtrl', function($scope, $ionicModal) {
 		$scope.modal.hide();
 	}
 	$scope.addDrawing = function(){
-		var newItem = {
-			"name": "Drawing " +  $scope.drawings.length
-		}
-		$scope.drawings.push(newItem);
+		
+		$scope.drawings.push({
+			"name": $scope.newItem.name
+		});
 		$scope.closeAddModal();
+		$scope.newItem.name = "";
 	}
 	
 	
