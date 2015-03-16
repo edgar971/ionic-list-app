@@ -20,14 +20,30 @@
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
+    <script src="js/controllers/controllers.js"></script>
+    
   </head>
   <body ng-app="starter">
 
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Drawing App</h1>
+    <ion-pane ng-controller="DrawingListCtrl">
+      <ion-header-bar class="bar-positive">
+        <h1 class="title">Drawings</h1>
+        <button class="button button-clear" type="submit" ng-click="openAddModal()"><span class="ion-plus-circled"></span></button>
       </ion-header-bar>
       <ion-content>
+      	
+      	<ion-list>
+      		<ion-item ng-show="drawings.length === 0">
+      			No Drawings yet!
+      		</ion-item>
+      		<ion-item ng-repeat="drawing in drawings">
+      			{{drawing.name}}
+	  				<ion-option-button class="button-assertive" ng-click="deleteDrawing(drawing)">
+						Delete
+					</ion-option-button>
+			</ion-item>
+      		
+      	</ion-list>
       </ion-content>
     </ion-pane>
   </body>

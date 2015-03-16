@@ -1,0 +1,20 @@
+<ion-modal-view>
+    <ion-header-bar>
+      <h1 class="title">Add Drawing</h1>
+    </ion-header-bar>
+    <ion-content>
+    	<form name="addDrawingForm" ng-submit="addDrawing()">
+			<ion-list>
+			  <ion-item class="item-input item-floating-label">
+			    <span class="input-label">Name</span>
+			    <input type="text" ng-model="newDrawing.name" name="name" placeholder="Name">
+			  </ion-item>
+			  <ion-item class="item-input-inset">
+			  	<button class="button button-block">
+			  	 	Add Drawing
+		  		</button>
+			  </ion-item>
+			</ion-list>    
+		</form>
+	</ion-content>
+ </ion-modal-view>
