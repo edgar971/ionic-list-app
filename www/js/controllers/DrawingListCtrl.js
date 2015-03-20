@@ -1,4 +1,5 @@
 myApp.controller('DrawingListCtrl', function($scope, $ionicModal, DrawingsAPI) {
+	$scope.drawings = DrawingsAPI.getDrawings();
 	$scope.newItem = {name: ""};
 	$ionicModal.fromTemplateUrl('/js/templates/addDrawingModal.html', {
     	scope: $scope,
@@ -9,21 +10,11 @@ myApp.controller('DrawingListCtrl', function($scope, $ionicModal, DrawingsAPI) {
   	
   	
   	
-	$scope.drawings = [
-		{
-			"name": "Drawing 1"
-		},	
-		{
-			"name": "Drawing 2"
-		},
-		{
-			"name": "Drawing 3"
-		}
-	];
+  	
+	
 
 	$scope.deleteDrawing = function(drawing) {
-		var index = $scope.drawings.indexOf(drawing);
-		$scope.drawings.splice(index, 1);
+		DrawingsAPI.removeDrawing(drawing);
 	}
 	$scope.openAddModal = function() {
 		$scope.modal.show();
@@ -32,10 +23,7 @@ myApp.controller('DrawingListCtrl', function($scope, $ionicModal, DrawingsAPI) {
 		$scope.modal.hide();
 	}
 	$scope.addDrawing = function(){
-		
-		$scope.drawings.push({
-			"name": $scope.newItem.name
-		});
+		DrawingsAPI.addDrawing($scope.newItem.name);
 		$scope.closeAddModal();
 		$scope.newItem.name = "";
 	}
