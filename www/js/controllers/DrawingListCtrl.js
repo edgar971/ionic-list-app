@@ -1,5 +1,8 @@
 myApp.controller('DrawingListCtrl', function($scope, $ionicModal, DrawingsAPI) {
 	$scope.drawings = DrawingsAPI.getDrawings();
+	$scope.data = {
+    	showDelete: false
+  	};
 	$scope.newItem = {name: ""};
 	$ionicModal.fromTemplateUrl('/js/templates/addDrawingModal.html', {
     	scope: $scope,
@@ -10,8 +13,6 @@ myApp.controller('DrawingListCtrl', function($scope, $ionicModal, DrawingsAPI) {
   	
   	
   	
-  	
-	
 
 	$scope.deleteDrawing = function(drawing) {
 		DrawingsAPI.removeDrawing(drawing);

@@ -1,0 +1,21 @@
+      <ion-view view-title="Drawings List">
+	  	<ion-nav-buttons side="primary">
+	  		<button  class="button button-icon icon ion-ios-minus-outline" ng-click="data.showDelete = !data.showDelete;"></button>	  	
+	  	</ion-nav-buttons>
+	  	<ion-nav-buttons side="secondary">
+	  		<button  class="button button-icon icon ion-ios-plus-outline" ng-click="openAddModal()"></button>	  	
+	  	</ion-nav-buttons>
+	  	
+        <ion-content>
+        	<ion-list show-delete="data.showDelete">
+        		<ion-item ng-repeat="drawing in drawings" href="#/drawings/{{drawing.$id}}" class="item-remove-animate">
+        			{{drawing.name}}
+        			 <ion-option-button class="button-royal" ng-click="share(drawing)">
+					   Share
+				    </ion-option-button>
+				    <ion-delete-button class="ion-minus-circled" ng-click="deleteDrawing(drawing)">
+					</ion-delete-button>
+        		</ion-item>
+        	</ion-list>
+        </ion-content>
+      </ion-view>

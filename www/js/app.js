@@ -18,3 +18,25 @@ myApp.run(function($ionicPlatform) {
     }
   });
 })
+
+myApp.config(function($stateProvider, $urlRouterProvider) {
+
+  $stateProvider
+    .state('drawings', {
+      url: "/drawings",
+      abstract: true,
+      templateUrl: "/js/templates/appTabs.html"
+    })
+    .state('drawings.list', {
+      url: "/list",
+      views: {
+        'home-tab': {
+          templateUrl: "/js/templates/drawingsList.html",
+          controller: 'DrawingListCtrl'
+        }
+      }
+    });
+    $urlRouterProvider.otherwise("/drawings/list");
+
+});
+
