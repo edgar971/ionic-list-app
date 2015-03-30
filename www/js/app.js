@@ -35,6 +35,15 @@ myApp.config(function($stateProvider, $urlRouterProvider) {
           controller: 'DrawingListCtrl'
         }
       }
+    })
+    .state('drawings.single', {
+	    url: "/:drawingID",
+	    views: {
+		    'home-tab': {
+			    templateUrl: "/js/templates/drawingSingle.html",
+			    controller: 'SingleDrawingListCtrl'
+		    }
+	    }
     });
     $urlRouterProvider.otherwise("/drawings/list");
 
